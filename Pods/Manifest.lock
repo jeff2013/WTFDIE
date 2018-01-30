@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (4.5.1)
+  - AlamofireObjectMapper (5.0.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.0)
+  - GoogleMaps (2.5.0):
+    - GoogleMaps/Maps (= 2.5.0)
+  - GoogleMaps/Base (2.5.0)
+  - GoogleMaps/Maps (2.5.0):
+    - GoogleMaps/Base
+  - GooglePlacePicker (2.5.0):
+    - GoogleMaps (= 2.5.0)
+    - GooglePlaces (= 2.5.0)
+  - GooglePlaces (2.5.0):
+    - GoogleMaps/Base (= 2.5.0)
+  - ObjectMapper (3.0.0)
+  - SVProgressHUD (2.2.2)
+  - TextAttributes (1.0)
+
+DEPENDENCIES:
+  - AlamofireObjectMapper
+  - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
+  - SVProgressHUD
+  - TextAttributes (from `https://github.com/ejmartin504/TextAttributes.git`, branch `swift4`)
+
+EXTERNAL SOURCES:
+  TextAttributes:
+    :branch: swift4
+    :git: https://github.com/ejmartin504/TextAttributes.git
+
+CHECKOUT OPTIONS:
+  TextAttributes:
+    :commit: 5103579729925acf896697d0f799dff4468d4a39
+    :git: https://github.com/ejmartin504/TextAttributes.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
+  GooglePlacePicker: 1573e644ab54564d95c2643edc0f29091609e966
+  GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
+  ObjectMapper: 92230db59bf8f341a5c3a3cf0b9fbdde3cf0d87f
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  TextAttributes: 45b2713a1d174c377d320b51129c304eac381638
+
+PODFILE CHECKSUM: 27cd114433dd87885884038255e74950d537b874
+
+COCOAPODS: 1.2.1

@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  WTFDIE
+
+  Created by Jeff Chang on 2017-10-02.
+  Copyright © 2017 WTFDIE. All rights reserved.
+*/
+
+//General
+"General.Ok" = "Ok";
+"General.Cancel" = "Cancel";
+"General.Search" = "Search";
+
+//Home
+"Home.Location.Request" = "Unknown";
+"Home.Location.Select" = "Current Location";

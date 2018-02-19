@@ -14,3 +14,8 @@
 //Home
 "Home.Location.Request" = "Unknown";
 "Home.Location.Select" = "Current Location";
+
+//Location
+"Location.Request.Title" = "Enable Location";
+"Location.Request.Body" = "WTFDIE uses your locaiton to search for nearby buisnesses and give you local recommendations!";
+"Location.Button.Title" = "OK, I understand";

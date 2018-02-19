@@ -15,6 +15,10 @@
 		5F1410191F8C7BCA008118A8 /* KeywordOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1410181F8C7BCA008118A8 /* KeywordOptionTableViewCell.swift */; };
 		5F14101E1F8D5A69008118A8 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14101C1F8D5A69008118A8 /* KeywordTableViewCell.swift */; };
 		5F14101F1F8D5A69008118A8 /* KeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F14101D1F8D5A69008118A8 /* KeywordTableViewCell.xib */; };
+		5F31EB2D203A89F70097FB1B /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F31EB2C203A89F70097FB1B /* OverlayViewController.swift */; };
+		5F31EB2F203A8A010097FB1B /* OverlayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F31EB2E203A8A010097FB1B /* OverlayViewController.storyboard */; };
+		5F4F6AB220215CAA0030491E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F6AB120215CAA0030491E /* LocationViewController.swift */; };
+		5F4F6AB420215CB90030491E /* LocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F6AB320215CB90030491E /* LocationViewController.storyboard */; };
 		5F52D6291FB2466F00FDE769 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52D6281FB2466F00FDE769 /* UIViewExtension.swift */; };
 		5F75255B1FE52C29004F1D5C /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F75255A1FE52C29004F1D5C /* DraggableView.swift */; };
 		5FB584841F7DBCD0008275BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB584831F7DBCD0008275BF /* AppDelegate.swift */; };
@@ -58,6 +62,10 @@
 		5F1410181F8C7BCA008118A8 /* KeywordOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordOptionTableViewCell.swift; sourceTree = "<group>"; };
 		5F14101C1F8D5A69008118A8 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
 		5F14101D1F8D5A69008118A8 /* KeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordTableViewCell.xib; sourceTree = "<group>"; };
+		5F31EB2C203A89F70097FB1B /* OverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
+		5F31EB2E203A8A010097FB1B /* OverlayViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OverlayViewController.storyboard; sourceTree = "<group>"; };
+		5F4F6AB120215CAA0030491E /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		5F4F6AB320215CB90030491E /* LocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationViewController.storyboard; sourceTree = "<group>"; };
 		5F52D6281FB2466F00FDE769 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		5F75255A1FE52C29004F1D5C /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		5FB584801F7DBCD0008275BF /* WTFDIE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTFDIE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +161,10 @@
 				5FCB4A521F8AFDF40083FB61 /* OptionsViewController.storyboard */,
 				5FF886F91FA2CB0C0073B064 /* ResultsViewController.storyboard */,
 				5FF887041FA2CECB0073B064 /* ResultsViewController.swift */,
+				5F4F6AB120215CAA0030491E /* LocationViewController.swift */,
+				5F4F6AB320215CB90030491E /* LocationViewController.storyboard */,
+				5F31EB2C203A89F70097FB1B /* OverlayViewController.swift */,
+				5F31EB2E203A8A010097FB1B /* OverlayViewController.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -367,9 +379,11 @@
 				5FB584B21F82BCD7008275BF /* Localizable.strings in Resources */,
 				5FF886FF1FA2CC4F0073B064 /* PlaceCollectionViewCell.xib in Resources */,
 				5F14101F1F8D5A69008118A8 /* KeywordTableViewCell.xib in Resources */,
+				5F4F6AB420215CB90030491E /* LocationViewController.storyboard in Resources */,
 				5FB584911F7DBCD0008275BF /* LaunchScreen.storyboard in Resources */,
 				5FCB4A531F8AFDF40083FB61 /* OptionsViewController.storyboard in Resources */,
 				5FB5848E1F7DBCD0008275BF /* Assets.xcassets in Resources */,
+				5F31EB2F203A8A010097FB1B /* OverlayViewController.storyboard in Resources */,
 				5FCB4A611F8B10E00083FB61 /* SearchTypeOptionTableViewCell.xib in Resources */,
 				5FB584891F7DBCD0008275BF /* Main.storyboard in Resources */,
 				5FB584A91F7DCCB3008275BF /* DecisionViewController.storyboard in Resources */,
@@ -454,11 +468,13 @@
 				5FB584AB1F801070008275BF /* Restaurant.swift in Sources */,
 				5FB584AD1F801312008275BF /* Places.swift in Sources */,
 				5FCB4A561F8B02690083FB61 /* SearchTypeTableViewCell.swift in Sources */,
+				5F31EB2D203A89F70097FB1B /* OverlayViewController.swift in Sources */,
 				5F1410161F8C65FB008118A8 /* DistanceOptionTableViewCell.swift in Sources */,
 				5F1410121F8C1EB6008118A8 /* UITableViewCellExtension.swift in Sources */,
 				5F52D6291FB2466F00FDE769 /* UIViewExtension.swift in Sources */,
 				5FF887051FA2CECB0073B064 /* ResultsViewController.swift in Sources */,
 				5FF886FE1FA2CC4F0073B064 /* PlaceCollectionViewCell.swift in Sources */,
+				5F4F6AB220215CAA0030491E /* LocationViewController.swift in Sources */,
 				5FB584BC1F82C153008275BF /* StringExtension.swift in Sources */,
 				5FB584B41F82BE99008275BF /* Style.swift in Sources */,
 			);

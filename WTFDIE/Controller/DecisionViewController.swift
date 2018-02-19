@@ -48,7 +48,7 @@ class DecisionViewController: UIViewController {
         
         gpsImageView.animateCircle(with: 2.0, shouldRepeat: true)
         
-        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -74,7 +74,6 @@ class DecisionViewController: UIViewController {
         animation.toValue = toValue
         view.layer.add(animation, forKey: nil)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

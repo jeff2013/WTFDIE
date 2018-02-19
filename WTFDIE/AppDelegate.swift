@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        setHomeViewController()
+        setRootViewController()
+        showLocationView()
         return true
     }
 
@@ -92,13 +93,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func setHomeViewController() {
-        let homeViewController: UINavigationController = UINavigationController.initialViewControllerFromStoryboard(storyboard: .decisionViewController)
-//        let homeViewController: DecisionViewController = DecisionViewController.instanceFromStoryboard(storyboard: .decisionViewController)
+    private func setRootViewController() {
+        let rootViewController: DecisionViewController = DecisionViewController.instanceFromStoryboard(storyboard: .decisionViewController)
+        
         GMSPlacesClient.provideAPIKey("AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw")
         GMSServices.provideAPIKey("AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw")
-        window?.rootViewController = homeViewController
+        
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+    }
+    
+    func showLocationView() {
+        let locationController: LocationViewController = LocationViewController.instanceFromStoryboard(storyboard: .locationViewController)
+        let overlayController: OverlayViewController = OverlayViewController.instanceFromStoryboard(storyboard: .overlayViewController)
+        if let view = overlayController.view {
+            if CLLocationManager.locationServicesEnabled() {
+                switch CLLocationManager.authorizationStatus() {
+                case .notDetermined, .restricted, .denied:
+                    
+                    view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    view.frame = (window?.rootViewController?.view.bounds)!
+                    window?.rootViewController?.view.addSubview(view)
+                    window?.makeKeyAndVisible()
+                    DispatchQueue.global().async {
+                        DispatchQueue.main.async {
+                            self.window?.rootViewController?.present(locationController, animated: false, completion: {
+                                view.removeFromSuperview()
+                            })
+                        }
+                    }
+                case .authorizedAlways, .authorizedWhenInUse:
+                    break
+                }
+            }
+        }
+        
+    }
+    
+    private func switchToDecisionViewController() {
+        let decisionViewController: DecisionViewController = DecisionViewController.instanceFromStoryboard(storyboard: .decisionViewController)
+        GMSPlacesClient.provideAPIKey("AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw")
+        GMSServices.provideAPIKey("AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw")
+        window?.rootViewController = decisionViewController
+        window?.makeKeyAndVisible()
+        
     }
 
 }

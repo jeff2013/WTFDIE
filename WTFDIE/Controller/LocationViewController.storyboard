@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ixa-nJ-TAd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Location View Controller-->
+        <scene sceneID="959-mc-Tey">
+            <objects>
+                <viewController storyboardIdentifier="LocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ixa-nJ-TAd" customClass="LocationViewController" customModule="WTFDIE" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rOU-d8-DUn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZk-Cf-mbI">
+                                <rect key="frame" x="16" y="596" width="343" height="51"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="YPy-gx-I6J"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Enable Location"/>
+                                <connections>
+                                    <action selector="EnableLocation:" destination="Ixa-nJ-TAd" eventType="touchUpInside" id="TJX-1J-J3d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8y-aS-rds">
+                                <rect key="frame" x="16" y="567" width="343" height="21"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQn-tX-km2">
+                                <rect key="frame" x="16" y="538" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bBY-yv-Rv5" firstAttribute="bottom" secondItem="lZk-Cf-mbI" secondAttribute="bottom" constant="20" id="6td-bT-E5q"/>
+                            <constraint firstItem="bBY-yv-Rv5" firstAttribute="trailing" secondItem="a8y-aS-rds" secondAttribute="trailing" constant="16" id="9Lc-Gz-RY8"/>
+                            <constraint firstItem="lZk-Cf-mbI" firstAttribute="leading" secondItem="bBY-yv-Rv5" secondAttribute="leading" constant="16" id="AXM-Ld-0QB"/>
+                            <constraint firstItem="a8y-aS-rds" firstAttribute="top" secondItem="nQn-tX-km2" secondAttribute="bottom" constant="8" id="Pad-Co-lSV"/>
+                            <constraint firstItem="bBY-yv-Rv5" firstAttribute="trailing" secondItem="lZk-Cf-mbI" secondAttribute="trailing" constant="16" id="Y2Q-1d-jPT"/>
+                            <constraint firstItem="lZk-Cf-mbI" firstAttribute="top" secondItem="a8y-aS-rds" secondAttribute="bottom" constant="8" id="dWg-8g-8q1"/>
+                            <constraint firstItem="bBY-yv-Rv5" firstAttribute="trailing" secondItem="nQn-tX-km2" secondAttribute="trailing" constant="16" id="hsT-Ff-pHj"/>
+                            <constraint firstItem="a8y-aS-rds" firstAttribute="leading" secondItem="bBY-yv-Rv5" secondAttribute="leading" constant="16" id="lwe-zL-Qxs"/>
+                            <constraint firstItem="nQn-tX-km2" firstAttribute="leading" secondItem="bBY-yv-Rv5" secondAttribute="leading" constant="16" id="q1T-XU-cVm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bBY-yv-Rv5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zsM-tG-T15"/>
+                    <connections>
+                        <outlet property="EnableButton" destination="lZk-Cf-mbI" id="aLb-Wu-bzy"/>
+                        <outlet property="LocationRequestBodyLabel" destination="a8y-aS-rds" id="QTX-x1-Ipe"/>
+                        <outlet property="LocationRequestTitleLabel" destination="nQn-tX-km2" id="Zln-No-vcI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KeC-Kw-dt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856.79999999999995" y="-279.31034482758622"/>
+        </scene>
+    </scenes>
+</document>

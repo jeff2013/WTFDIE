@@ -11,4 +11,6 @@ public enum Storyboard: String {
     case decisionViewController = "DecisionViewController"
     case optionsViewController = "OptionsViewController"
     case resultsViewController = "ResultsViewController"
+    case locationViewController = "LocationViewController"
+    case overlayViewController = "OverlayViewController"
 }

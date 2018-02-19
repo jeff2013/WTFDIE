@@ -17,6 +17,7 @@ indirect enum Style: Int {
     case headerLeft
     case labelGreyLeft
     case labelWhiteCenter
+    case labelGreyCenter
 }
 
 class StyleGuide {
@@ -53,6 +54,11 @@ class StyleGuide {
                 .font(UIFont(.helveticaNeueMedium, size: 17))
                 .foregroundColor(UIColor(.warmGrey))
                 .alignment(.left)
+        case .labelGreyCenter:
+            return TextAttributes()
+                .font(UIFont(.helveticaNeueMedium, size: 17))
+                .foregroundColor(UIColor(.warmGrey))
+                .alignment(.center)
         case .labelWhiteCenter:
             return TextAttributes()
                 .font(UIFont(.helveticaNeueMedium, size: 17))

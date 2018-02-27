@@ -23,6 +23,7 @@ class Restaurant: Mappable {
     var rating: Double = 0.0
     var priceLevel: Int = PriceRange.unknown.rawValue
     var address: String!
+    var website: String! = nil
     
     init() {
     }
@@ -34,13 +35,14 @@ class Restaurant: Mappable {
         longitude <- map["geometry.location.lng"]
         name <- map["name"]
         isOpen <- map["opening_hours.open_now"]
-        id <- map["id"]
+        id <- map["place_id"]
         icon <- map["icon"]
         types <- map["types"]
         vicinity <- map["vicinity"]
         rating <- map["rating"]
         priceLevel <- map["price_level"]
         address <- map["vicinity"]
+        
     }
     
     func getRating() -> String {

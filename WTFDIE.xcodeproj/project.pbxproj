@@ -17,6 +17,8 @@
 		5F14101F1F8D5A69008118A8 /* KeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F14101D1F8D5A69008118A8 /* KeywordTableViewCell.xib */; };
 		5F31EB2D203A89F70097FB1B /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F31EB2C203A89F70097FB1B /* OverlayViewController.swift */; };
 		5F31EB2F203A8A010097FB1B /* OverlayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F31EB2E203A8A010097FB1B /* OverlayViewController.storyboard */; };
+		5F31EB31203A9D540097FB1B /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F31EB30203A9D540097FB1B /* Directions.swift */; };
+		5F31EB35203B68C00097FB1B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F31EB34203B68C00097FB1B /* Route.swift */; };
 		5F4F6AB220215CAA0030491E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F6AB120215CAA0030491E /* LocationViewController.swift */; };
 		5F4F6AB420215CB90030491E /* LocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F6AB320215CB90030491E /* LocationViewController.storyboard */; };
 		5F52D6291FB2466F00FDE769 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52D6281FB2466F00FDE769 /* UIViewExtension.swift */; };
@@ -47,6 +49,7 @@
 		5FCB4A5D1F8B04920083FB61 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCB4A5C1F8B04920083FB61 /* ReusableView.swift */; };
 		5FCB4A601F8B10E00083FB61 /* SearchTypeOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCB4A5E1F8B10E00083FB61 /* SearchTypeOptionTableViewCell.swift */; };
 		5FCB4A611F8B10E00083FB61 /* SearchTypeOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCB4A5F1F8B10E00083FB61 /* SearchTypeOptionTableViewCell.xib */; };
+		5FDD0279204511A400967A42 /* GMSMarkerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD0278204511A400967A42 /* GMSMarkerExtension.swift */; };
 		5FF886FA1FA2CB0C0073B064 /* ResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF886F91FA2CB0C0073B064 /* ResultsViewController.storyboard */; };
 		5FF886FE1FA2CC4F0073B064 /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF886FC1FA2CC4F0073B064 /* PlaceCollectionViewCell.swift */; };
 		5FF886FF1FA2CC4F0073B064 /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF886FD1FA2CC4F0073B064 /* PlaceCollectionViewCell.xib */; };
@@ -64,6 +67,8 @@
 		5F14101D1F8D5A69008118A8 /* KeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordTableViewCell.xib; sourceTree = "<group>"; };
 		5F31EB2C203A89F70097FB1B /* OverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		5F31EB2E203A8A010097FB1B /* OverlayViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OverlayViewController.storyboard; sourceTree = "<group>"; };
+		5F31EB30203A9D540097FB1B /* Directions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directions.swift; sourceTree = "<group>"; };
+		5F31EB34203B68C00097FB1B /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		5F4F6AB120215CAA0030491E /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		5F4F6AB320215CB90030491E /* LocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationViewController.storyboard; sourceTree = "<group>"; };
 		5F52D6281FB2466F00FDE769 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 		5FCB4A5C1F8B04920083FB61 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		5FCB4A5E1F8B10E00083FB61 /* SearchTypeOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTypeOptionTableViewCell.swift; sourceTree = "<group>"; };
 		5FCB4A5F1F8B10E00083FB61 /* SearchTypeOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTypeOptionTableViewCell.xib; sourceTree = "<group>"; };
+		5FDD0278204511A400967A42 /* GMSMarkerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMarkerExtension.swift; sourceTree = "<group>"; };
 		5FF886F91FA2CB0C0073B064 /* ResultsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultsViewController.storyboard; sourceTree = "<group>"; };
 		5FF886FC1FA2CC4F0073B064 /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FF886FD1FA2CC4F0073B064 /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				5FF887061FA2D1550073B064 /* UICollectionViewExtension.swift */,
 				5F1410111F8C1EB6008118A8 /* UITableViewCellExtension.swift */,
 				5F52D6281FB2466F00FDE769 /* UIViewExtension.swift */,
+				5FDD0278204511A400967A42 /* GMSMarkerExtension.swift */,
 			);
 			name = Extenstions;
 			path = Extensions;
@@ -248,6 +255,8 @@
 				5FB584A41F7DCB92008275BF /* Storyboard.swift */,
 				5FB584AA1F801070008275BF /* Restaurant.swift */,
 				5FB584AC1F801312008275BF /* Places.swift */,
+				5F31EB30203A9D540097FB1B /* Directions.swift */,
+				5F31EB34203B68C00097FB1B /* Route.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,13 +455,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F1410101F8C179F008118A8 /* PriceSelectionTableViewCell.swift in Sources */,
+				5F31EB31203A9D540097FB1B /* Directions.swift in Sources */,
 				5FB584A31F7DCB59008275BF /* UIViewControllerExtension.swift in Sources */,
 				5FCB4A591F8B03570083FB61 /* ConfigurableTableCellProtocol.swift in Sources */,
 				5FB584B61F82BFD5008275BF /* Font.swift in Sources */,
+				5FDD0279204511A400967A42 /* GMSMarkerExtension.swift in Sources */,
 				5FB584AF1F801366008275BF /* GooglePlacesService.swift in Sources */,
 				5FCB4A511F8AFDE70083FB61 /* OptionsViewController.swift in Sources */,
 				5F14101E1F8D5A69008118A8 /* KeywordTableViewCell.swift in Sources */,
 				5FB584A51F7DCB92008275BF /* Storyboard.swift in Sources */,
+				5F31EB35203B68C00097FB1B /* Route.swift in Sources */,
 				5FB584861F7DBCD0008275BF /* ViewController.swift in Sources */,
 				5FB584B81F82C024008275BF /* Color.swift in Sources */,
 				5FB5848C1F7DBCD0008275BF /* WTFDIE.xcdatamodeld in Sources */,

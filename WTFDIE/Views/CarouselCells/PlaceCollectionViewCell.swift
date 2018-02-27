@@ -23,6 +23,8 @@ class PlaceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var placeAddressLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    var delegate: showDetailDelegate!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -49,6 +51,9 @@ class PlaceCollectionViewCell: UICollectionViewCell {
         self.layoutIfNeeded()
         
         self.clipsToBounds = false
+    }
+    @IBAction func showInfo(_ sender: Any) {
+        delegate.showDetail()
     }
 }
 

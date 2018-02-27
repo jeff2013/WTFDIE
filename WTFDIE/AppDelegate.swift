@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setRootViewController() {
-        let rootViewController: DecisionViewController = DecisionViewController.instanceFromStoryboard(storyboard: .decisionViewController)
+        let rootViewController: UINavigationController = UINavigationController.initialViewControllerFromStoryboard(storyboard: .decisionViewController)
         
         GMSPlacesClient.provideAPIKey("AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw")
         GMSServices.provideAPIKey("AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw")

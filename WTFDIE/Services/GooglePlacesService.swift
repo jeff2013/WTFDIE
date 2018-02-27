@@ -19,7 +19,16 @@ class GooglePlacesService {
         let parameters: [String: Any] = ["location": "\(location.latitude),\(location.longitude)", "radius": radius, "type": type, "keyword": keyword, "key": "AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw"]
         
         Alamofire.request(baseURL, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject { (response: DataResponse<Places>) in
-            print(response.request)
+            completion(response)
+        }
+    }
+    
+    class func getPath(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, completion: @escaping(DataResponse<Directions>) -> Void) {
+        let baseURL = "https://maps.googleapis.com/maps/api/directions/json?"
+        
+        let parameters: [String: Any] = ["origin":"\(origin.latitude),\(origin.longitude)", "destination": "\(destination.latitude),\(destination.longitude)", "mode": "driving", "key": "AIzaSyBpVerz2iMPKNk864KkuzmC6UcMlPSPyDw"]
+        
+        Alamofire.request(baseURL, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject { (response: DataResponse<Directions>) in
             completion(response)
         }
     }

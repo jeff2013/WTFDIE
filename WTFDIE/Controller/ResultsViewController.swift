@@ -9,6 +9,12 @@
 import UIKit
 import MapKit
 import GoogleMaps
+import GooglePlaces
+import SafariServices
+
+protocol showDetailDelegate {
+    func showDetail()
+}
 
 class ResultsViewController: UIViewController {
     
@@ -25,6 +31,10 @@ class ResultsViewController: UIViewController {
     
     var location: CLLocationCoordinate2D!
     
+    var destination: CLLocationCoordinate2D!
+    
+    var selectedRestaurant: Restaurant!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,8 +49,13 @@ class ResultsViewController: UIViewController {
         
         draggableView.customViewHeight = collectionViewHeight
         setupCarousel()
+        
         leftLineImage.layer.borderColor = UIColor.blue.cgColor
         leftLineImage.layer.borderWidth = 2.0
+        
+        if let firstPlace = places.first {
+            destination = CLLocationCoordinate2D(latitude: firstPlace.latitude, longitude: firstPlace.longitude)
+        }
     }
     
     private func setupCarousel() {
@@ -59,14 +74,17 @@ class ResultsViewController: UIViewController {
     }
     
     private func setupMap() {
-        mapView.animate(toLocation: location);
-        mapView.camera = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: 16.0)
         createAnnotation(for: location)
     }
     
     private func createAnnotation(for location: CLLocationCoordinate2D) {
+        mapView.animate(toLocation: location);
+        mapView.camera = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: 16.0)
+        
         let marker = GMSMarker(position: location)
+        marker.style(with: MarkerType.currentLocation)
         marker.map = mapView
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,35 +109,63 @@ class ResultsViewController: UIViewController {
     // Above line is untrue 
     // Nope writing code at 4am probably makes me write dumb things
     @IBAction func toggleCollectionView(_ sender: Any) {
-//        self.view.layoutIfNeeded()
-//        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
-//            if self.collectionViewHeight.constant == 344.0 {
-//                self.collectionViewHeight.constant = 50
-//            } else {
-//                self.collectionViewHeight.constant = 344
-//            }
-//            self.view.layoutIfNeeded()
-//        })
-        
-        let frame: CGRect = leftLineImage.frame
-        let oldAnchorPoint = leftLineImage.layer.anchorPoint
-        let newAnchorPoint = CGPoint(x: 1.0, y: 0.0)
-        
-        let offSetFrameX = leftLineImage.bounds.width * (newAnchorPoint.x-oldAnchorPoint.x)
-        let offSetFrameY = leftLineImage.bounds.height * (newAnchorPoint.y-oldAnchorPoint.y)
-        self.leftLineImage.transform = CGAffineTransform.init(translationX: leftLineImage.bounds.width/2, y: leftLineImage.bounds.height/2)
-        leftLineImage.layer.anchorPoint = newAnchorPoint
         self.view.layoutIfNeeded()
-        UIView.animateKeyframes(withDuration: 1, delay: 0, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
-//                self.leftLineImage.transform = CGAffineTransform(translationX: offSetFrameX, y: offSetFrameY)
-                self.leftLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
-                
-            })
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
+            if self.collectionViewHeight.constant == 344.0 {
+                self.collectionViewHeight.constant = 50
+            } else {
+                self.collectionViewHeight.constant = 344
+            }
+            self.view.layoutIfNeeded()
         })
+        
+        guard let destination = destination else {
+            return
+        }
+        
+        plotPath(with: destination)
+        
+//        let frame: CGRect = leftLineImage.frame
+//        let oldAnchorPoint = leftLineImage.layer.anchorPoint
+//        let newAnchorPoint = CGPoint(x: 1.0, y: 0.0)
+//
+//        let offSetFrameX = leftLineImage.bounds.width * (newAnchorPoint.x-oldAnchorPoint.x)
+//        let offSetFrameY = leftLineImage.bounds.height * (newAnchorPoint.y-oldAnchorPoint.y)
+//        self.leftLineImage.transform = CGAffineTransform.init(translationX: leftLineImage.bounds.width/2, y: leftLineImage.bounds.height/2)
+//        leftLineImage.layer.anchorPoint = newAnchorPoint
+//        self.view.layoutIfNeeded()
+//        UIView.animateKeyframes(withDuration: 1, delay: 0, animations: {
+//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
+////                self.leftLineImage.transform = CGAffineTransform(translationX: offSetFrameX, y: offSetFrameY)
+//                self.leftLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
+//
+//            })
+//        })
 //
         //leftLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
         
+        
+    }
+    
+    func plotPath(with destination: CLLocationCoordinate2D) {
+        GooglePlacesService.getPath(origin: location, destination: destination) { (result) in
+            if let directions = result.value, let routes = directions.routes, let route = routes.first, let points = route.points {
+                self.mapView.clear()
+                
+                self.createAnnotation(for: self.location)
+                self.createAnnotation(for: destination)
+                let path = GMSPath(fromEncodedPath: points)
+                let polyline = GMSPolyline(path: path)
+                polyline.strokeWidth = 3.0
+                polyline.map = self.mapView
+                let bounds = GMSCoordinateBounds(path: path!)
+                let cameraUpdate = GMSCameraUpdate.fit(bounds)
+                self.mapView.animate(with: cameraUpdate)
+            }
+        }
+    }
+    
+    func getWebsiteInformation() {
         
     }
 }
@@ -139,20 +185,30 @@ extension ResultsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:PlaceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCollectionViewCell.defaultReuseIdentifier, for: indexPath) as! PlaceCollectionViewCell
-        //cell.configureCell(object: )
-        // Configure the cell
-        
-//        var testPlace = Restaurant()
-//        testPlace.isOpen = true
-//        testPlace.latitude = 49.2826215
-//        testPlace.longitude = -123.109359
-//        testPlace.rating = "4.5"
-//        testPlace.priceLevel = 1
-//        testPlace.address = "370 Cambie Street, Vancouver"
-//        testPlace.name = "Meat & Bread"
         cell.configureCell(object: (places[indexPath.row], CLLocation(latitude: location.latitude, longitude: location.longitude)))
         cell.backgroundColor = UIColor.lightGray
+        cell.delegate = self
         return cell
+    }
+    
+    func updateMapDirections(for selectedPlace: Restaurant) {
+            let client = GMSPlacesClient.shared()
+            client.lookUpPlaceID(selectedPlace.id, callback: { (place, error) -> Void in
+                //selectedPlace.website = place?.website
+                if let url = place?.website {
+                    let vc = SFSafariViewController(url: url)
+                    //let vc = SFSafariViewController(url: url, configuration: config)
+                    self.present(vc, animated: true)
+                    print("PRESENTED")
+                    return
+                } else {
+                    print("URL NIL")
+                }
+                //let config = SFSafariViewController.Configuration()
+               
+            })
+        
+        
     }
     
 }
@@ -203,5 +259,26 @@ extension ResultsViewController: UIScrollViewDelegate {
         offset = CGPoint(x: index * cellWidth - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         
         targetContentOffset.pointee = offset
+        
+        let selectedRestaurant = places[Int(index)]
+        let destination: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: selectedRestaurant.latitude, longitude: selectedRestaurant.longitude)
+        createAnnotation(for: destination)
+        let bounds = GMSCoordinateBounds(coordinate: destination, coordinate: destination)
+        mapView.animate(with: GMSCameraUpdate.fit(bounds))
+        mapView.animate(toZoom: 16.0)
+        mapView.animate(with: GMSCameraUpdate.scrollBy(x: 0, y: 100))
+        self.destination = destination
+        self.selectedRestaurant = selectedRestaurant
+
+    }   
+}
+
+extension ResultsViewController: showDetailDelegate {
+    
+    func showDetail() {
+        guard let selectedRestaurant = selectedRestaurant else {
+            return
+        }
+        updateMapDirections(for: selectedRestaurant)
     }
 }

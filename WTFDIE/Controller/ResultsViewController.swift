@@ -21,6 +21,8 @@ class ResultsViewController: UIViewController {
     var places: [Restaurant] = []
     
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var tabViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -41,21 +43,28 @@ class ResultsViewController: UIViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        setupCollectionView()
+        setupCarousel()
+        
+//        leftLineImage.layer.borderColor = UIColor.blue.cgColor
+//        leftLineImage.layer.borderWidth = 2.0
+        
+        if let firstPlace = places.first {
+            destination = CLLocationCoordinate2D(latitude: firstPlace.latitude, longitude: firstPlace.longitude)
+            selectedRestaurant = firstPlace
+        }
+    }
+    
+    private func setupCollectionView() {
         // Register cell classes
         collectionView.registerCellTypes(types: [PlaceCollectionViewCell.self])
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
+        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         
         draggableView.customViewHeight = collectionViewHeight
-        setupCarousel()
-        
-        leftLineImage.layer.borderColor = UIColor.blue.cgColor
-        leftLineImage.layer.borderWidth = 2.0
-        
-        if let firstPlace = places.first {
-            destination = CLLocationCoordinate2D(latitude: firstPlace.latitude, longitude: firstPlace.longitude)
-        }
+        draggableView.tabHeight = tabViewHeight
     }
     
     private func setupCarousel() {
@@ -85,6 +94,8 @@ class ResultsViewController: UIViewController {
         marker.style(with: MarkerType.currentLocation)
         marker.map = mapView
         
+        mapView.animate(with: GMSCameraUpdate.scrollBy(x: 0, y: 100))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,19 +120,10 @@ class ResultsViewController: UIViewController {
     // Above line is untrue 
     // Nope writing code at 4am probably makes me write dumb things
     @IBAction func toggleCollectionView(_ sender: Any) {
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
-            if self.collectionViewHeight.constant == 344.0 {
-                self.collectionViewHeight.constant = 50
-            } else {
-                self.collectionViewHeight.constant = 344
-            }
-            self.view.layoutIfNeeded()
-        })
-        
         guard let destination = destination else {
             return
         }
+        draggableView.collapseView()
         
         plotPath(with: destination)
         
@@ -194,15 +196,12 @@ extension ResultsViewController: UICollectionViewDataSource {
     func updateMapDirections(for selectedPlace: Restaurant) {
             let client = GMSPlacesClient.shared()
             client.lookUpPlaceID(selectedPlace.id, callback: { (place, error) -> Void in
-                //selectedPlace.website = place?.website
                 if let url = place?.website {
                     let vc = SFSafariViewController(url: url)
-                    //let vc = SFSafariViewController(url: url, configuration: config)
                     self.present(vc, animated: true)
-                    print("PRESENTED")
                     return
                 } else {
-                    print("URL NIL")
+                    self.presentAlert(with: .noWebsite)
                 }
                 //let config = SFSafariViewController.Configuration()
                
@@ -262,6 +261,8 @@ extension ResultsViewController: UIScrollViewDelegate {
         
         let selectedRestaurant = places[Int(index)]
         let destination: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: selectedRestaurant.latitude, longitude: selectedRestaurant.longitude)
+        mapView.clear()
+        createAnnotation(for: location)
         createAnnotation(for: destination)
         let bounds = GMSCoordinateBounds(coordinate: destination, coordinate: destination)
         mapView.animate(with: GMSCameraUpdate.fit(bounds))

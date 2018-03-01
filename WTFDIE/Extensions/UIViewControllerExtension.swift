@@ -8,6 +8,24 @@
 
 import UIKit
 
+public enum CustomAlertStyle {
+    case noWebsite
+    
+    func getTitle() -> String {
+        switch self {
+        case .noWebsite:
+            return "No website information"
+        }
+    }
+    
+    func getMessage() -> String {
+        switch self {
+        case .noWebsite:
+            return "There is currently no website associated with this establishment."
+        }
+    }
+}
+
 public extension UIViewController {
     
     public class func instanceFromStoryboard<T>(storyboard: Storyboard) -> T {
@@ -35,5 +53,12 @@ public extension UIViewController {
     private func setBackButton() {
         let backButton = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
+    }
+    
+    func presentAlert(with style: CustomAlertStyle) {
+        let controller = UIAlertController(title: style.getTitle(), message: style.getMessage(), preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        controller.addAction(action)
+        present(controller, animated: true, completion: nil)
     }
 }
